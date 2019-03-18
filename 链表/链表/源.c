@@ -23,7 +23,7 @@ void SListDestroy(Node* frist){
 }
 //链表的头插
 //因为要修改头指针，所以要用到二级指针，o(1)
-void SListPushFront(Node** ppFrist,int v){
+void SListPushFront(Node** ppFrist, int v){
 	//因为涉及到元素的插入，所以我们要动态申请内存
 	Node* node = (Node*)malloc(sizeof(Node));
 	node->next = *ppFrist;
@@ -38,9 +38,9 @@ void SListPopFront(Node** ppFrist){
 	free(tmp);
 }
 //尾插
-void SListPushBack(Node** ppFrist,int v){
+void SListPushBack(Node** ppFrist, int v){
 	//如果说链表是空链表，那么仍然需要改变头指针的值，所以要用二级指针
-	if (*ppFrist==NULL){
+	if (*ppFrist == NULL){
 		Node* node = (Node*)malloc(sizeof(Node));
 		node->value = v;
 
@@ -51,7 +51,7 @@ void SListPushBack(Node** ppFrist,int v){
 
 
 	Node* cur;
-	for ( cur = *ppFrist; cur->next != NULL;cur=cur->next){
+	for (cur = *ppFrist; cur->next != NULL; cur = cur->next){
 	}
 	Node* node = (Node*)malloc(sizeof(Node));
 	cur->next = node;
@@ -60,26 +60,26 @@ void SListPushBack(Node** ppFrist,int v){
 //尾删
 void SListPopBack(Node** ppFrist){
 	//保证链表不为空，故
-	assert(*ppFrist!=NULL);
-	if ((*ppFrist)->next==NULL){
+	assert(*ppFrist != NULL);
+	if ((*ppFrist)->next == NULL){
 		free(*ppFrist);
 		*ppFrist = NULL;
 		return;
 	}
 
 	Node* cur;
-	for (cur = *ppFrist; cur->next->next != NULL;cur=cur->next){
+	for (cur = *ppFrist; cur->next->next != NULL; cur = cur->next){
 	}
-	
+
 	free(cur->next);
 	cur->next = NULL;
 }
-Node* SListFind(const Node* frist,int v){
+Node* SListFind(const Node* frist, int v){
 	//首先如果要查找元素就需要保证链表不为空
-	assert(frist!=NULL);
+	assert(frist != NULL);
 	Node* cur;
-	for (cur = frist; cur->next != NULL;cur=cur->next){
-		if (cur->value==v){
+	for (cur = frist; cur->next != NULL; cur = cur->next){
+		if (cur->value == v){
 			return cur;
 		}
 	}
@@ -89,7 +89,7 @@ Node* SListFind(const Node* frist,int v){
 //在指定元素的后面插入
 //pos肯定是链表中的点
 void SListInsertAfter(Node* pos, int v){
-	
+
 	Node* node = (Node*)malloc(sizeof(Node));
 	node->next = pos->next;
 	pos->next = node;
