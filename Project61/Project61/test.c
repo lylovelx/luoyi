@@ -20,7 +20,7 @@ int MinMoneyNumble(int* arr, int i, int rest, int length){
 			res = res == -1 ? next + k : Min(res, k + next);
 		}
 	}
-	return res;
+	return res;	
 }
 
 int main(){
