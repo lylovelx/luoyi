@@ -61,7 +61,6 @@ public:
 		}
 		return  ret;
 	}
-
 	Date operator-(int days){
 		Date ret(*this);
 		if (ret._day - days <= 0){
