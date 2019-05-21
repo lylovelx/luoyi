@@ -91,6 +91,6 @@ int main(){
 		}
 		cout << str << endl;
 	}
-	system("pause");
+	//system("pause");
 	return 0;
 }
