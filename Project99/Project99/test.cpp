@@ -27,8 +27,8 @@ int main(){
 	int(*p)[3];
 	p = n;
 	cout << (*p)[5] << endl;	*/
-
-
+	
+	
 	/*string a("asasas");
 	string b("hello");
 	a.insert(1,b);
