@@ -25,3 +25,42 @@ public:
 		return root;
 	}
 };
+class Solution {
+public:
+	int minNumberInRotateArray(vector<int> rotateArray) {
+		//利用二分查找法
+		int start = 0;
+		int end = rotateArray.size() - 1;
+		//这种情况下相当于没有移动
+		if (rotateArray[start] < rotateArray[end]) {
+			return rotateArray[start];
+		}
+		while (start <= end) {
+			int middle = (start + end) / 2;
+			//在三者相等的情况下是不能判断指针如何移动，所以只能从头到尾遍历
+			if (rotateArray[start] == rotateArray[end] && rotateArray[middle] == rotateArray[start]) {
+				int min = rotateArray[0];
+				for (size_t i = 0; i < rotateArray.size(); ++i) {
+					if (min > rotateArray[i]) {
+						min = rotateArray[i];
+					}
+				}
+				return min;
+			}
+			//相差为一的时候即为最小值
+			if (end - start == 1) {
+				return rotateArray[end];
+			}
+
+			//说明在左非递减序列当中
+			if (rotateArray[middle] >= rotateArray[start]) {
+				start = middle;
+			}
+			//说明在右非递减序列当中
+			if (rotateArray[middle] <= rotateArray[end]) {
+				end = middle;
+			}
+		}
+		return 0;
+	}
+};
