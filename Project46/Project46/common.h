@@ -91,7 +91,7 @@ static std::string ChineseConvertPy(const std::string& dest_chinese) {
 		}
 
 		// ºº×Ö´¦Àí
-		chrasc = dest_chinese.at(j) * 256 + dest_chinese.at(j + 1) + 256;
+		chrasc = dest_chinese[j] * 256 + dest_chinese[j+1] + 256;
 		if (chrasc > 0 && chrasc < 160) {
 			// ·Çºº×Ö
 			pinyin += dest_chinese.at(j);
