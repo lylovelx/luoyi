@@ -47,10 +47,11 @@ struct Record {
 	int _line;
 	int cnt;
 	Record(string file, int line) :_file(file), _line(line), cnt(1) {}
-	bool operator==(Record& a) {
+	bool operator==(const Record& a) {
 		return (a._file == _file) && (a._line == _line);
 	}
 };
+
 int main() {
 	int line;
 	string file;

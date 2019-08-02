@@ -10,10 +10,12 @@
 #include<io.h>
 #include<stdio.h>
 #include<windows.h>
+#include<thread>
+#include<map>
 #include"sqlite3.h"
 
-#define TB_DOC "MYSQL"
-#define SQLITE "luoyi.db"
+#define TB_DOC "tb"
+#define SQLITE "yang.db"
 
 using std::cout;
 using std::endl;
@@ -24,6 +26,8 @@ using std::make_pair;
 using std::string;
 using std::vector;
 using std::set;
+using std::map;
+using std::thread;
 
 
 static std::string ChineseConvertPy(const std::string& dest_chinese) {
