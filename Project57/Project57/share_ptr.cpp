@@ -1,79 +1,241 @@
 //#include<iostream>
-//#include <memory>
+//#include<algorithm>
 //using namespace std;
+////插入排序 
+////void Sort(int* arr,int size) {
+////	for (int i = 1; i < size;++i) {
+////		int temp = arr[i];
+////		int j;
+////		for (j = i - 1; j >= 0 && temp < arr[j];--j) {
+////			arr[j + 1] = arr[j];
+////		}
+////		arr[j + 1] = temp;
+////	}
+////}
 //
-//class Date
-//{
-//public:
-//Date() { cout << "Date()" << endl;}
-//~Date(){ cout << "~Date()" << endl;}
-//int _year;
-//int _month;
-//int _day;
-//};
+////冒泡排序
+////void Sort(int* arr,int size) {
+////	for (int i = 0; i < size - 1;++i) {
+////		for (int j = 0; j < size - 1 - i;++j) {
+////			if (arr[j] > arr[j+1]) {
+////				swap(arr[j],arr[j+1]);
+////			}
+////		}
+////	}
+////}
+////选择排序
+////void Sort(int* arr,int size) {
+////	for (int i = 0; i < size-1;++i) {
+////		int maxIndex = 0;
+////		int j;
+////		for (j = 0; j < size - i;++j) {
+////			if (arr[maxIndex] < arr[j]) {
+////				maxIndex = j;
+////			}
+////		}
+////		swap(arr[j-1],arr[maxIndex]);
+////	}
+////}
+////堆排序
+////void AdjustDown(int* arr,int size,int index){
+////	//小堆----排降序
+////	while (1) {
+////		//左孩子下标
+////		int leftIndex = 2 * index + 1;
+////		//判断是否存在
+////		if (leftIndex>=size) {
+////			return;
+////		}
+////		//判断右孩子是否存在
+////		int minIndex = leftIndex;
+////		int rightIndex = 2 * index + 2;
+////		//得到最小下标
+////		if (rightIndex < size&&arr[rightIndex] < arr[leftIndex]) {
+////			minIndex = rightIndex;
+////		}
+////		if (arr[index] < arr[minIndex]) {
+////			return;
+////		}
+////		swap(arr[index],arr[minIndex]);
+////		index = minIndex;
+////	}
+////}
+////void AdjustUp(int* arr, int size, int index) {
+////	//大堆排升序
+////	while (index > 0) {
+////		int parentIndex = (index - 1) / 2;
+////		if (arr[parentIndex]>=arr[index]) {
+////			return;
+////		}
+////		swap(arr[parentIndex],arr[index]);
+////		index = parentIndex;
+////	}
+////}
+////void CreateHeap(int* arr, int size) {
+////
+////	/*for (int i = (size - 2) / 2; i >= 0;--i) {
+////		AdjustUp(arr,size,i);
+////	}*/
+////	for (int i = size - 1; i >= 0;--i) {
+////		AdjustUp(arr,size,i);
+////	}
+////}
+////void Sort(int* arr, int size) {
+////	CreateHeap(arr, size);
+////	for (int i = 0; i < size; ++i) {
+////		swap(arr[0], arr[size - 1 - i]);
+////		AdjustUp(arr, size - 1 - i, size-i-1);
+////	}
+////}
+////快速排序
+////int partion_1(int arr[], int left, int right) {
+////	int begin = left;
+////	int end = right;
+////	int pivot = arr[right];
+////	while (begin < end) {
+////		while (begin < end&&arr[begin] <= pivot) {
+////			begin++;
+////		}
+////		while (begin < end&&arr[end] >= pivot) {
+////			end--;
+////		}
+////		swap(arr[begin], arr[end]);
+////	}
+////	swap(arr[begin], arr[right]);
+////	return begin;
+////}
+////void QuickSort(int arr[], int left, int right) {
+////	if (left >= right) {
+////		return;
+////	}
+////	int d = partion_1(arr, left, right);
+////	QuickSort(arr, left, d - 1);
+////	QuickSort(arr, d + 1, right);
+////}
 //
-//template<class T>
-//class AutoPtr
-//{
-//public:
-//	AutoPtr(T* ptr = NULL)
-//		: _ptr(ptr)
-//	{}
-//	~AutoPtr()
-//	{
-//		if (_ptr)
-//			delete _ptr;
-//	}
-//	// 一旦发生拷贝，就将ap中资源转移到当前对象中，然后另ap与其所管理资源断开联系，
-//	// 这样就解决了一块空间被多个对象使用而造成程序奔溃问题
-//	AutoPtr(AutoPtr<T>& ap)
-//		: _ptr(ap._ptr)
-//	{
-//		ap._ptr = NULL;
-//	}
-//	AutoPtr<T>& operator=(AutoPtr<T>& ap)
-//	{
-//		// 检测是否为自己给自己赋值
-//		if (this != &ap)
-//		{
-//			// 释放当前对象中资源
-//			if (_ptr)
-//				delete _ptr;
-//			// 转移ap中资源到当前对象中
-//			_ptr = ap._ptr;
-//			ap._ptr = NULL;
+//
+////归并排序
+//void Merge(int* arr,int left,int mid, int right) {
+//	int* tmp = (int*)malloc(sizeof(int)*(right - left+1));
+//	int i = left;
+//	int j = mid+1;
+//	int k = 0;
+//	while (i<=mid&&j<=right) {
+//		if (arr[i]>arr[j]) {
+//			tmp[k++] = arr[j++];
 //		}
-//		return *this;
+//		else {
+//			tmp[k++] = arr[i++];
+//		}
 //	}
-//	T& operator*() { return *_ptr; }
-//	T* operator->() { return _ptr; }
-//private:
-//	T* _ptr;
-//};
-//int main()
-//{
-//	AutoPtr<Date> ap(new Date);
-//	// 现在再从实现原理层来分析会发现，这里拷贝后把ap对象的指针赋空了，导致ap对象悬空
-//	// 通过ap对象访问资源时就会出现问题。
+//	while (i<=mid) {
+//		tmp[k++] = arr[i++];
+//	}
+//	while (j<=right) {
+//		tmp[k++] = arr[j++];
+//	}
+//	for (int i = 0; i < k;++i) {
+//		arr[left+i] = tmp[i];
+//	}
+//	free(tmp);
+//}
+//void Sort(int* arr,int left,int right) {
+//	if (left >= right) {
+//		return;
+//	}
+//	int mid = (right + left) / 2;
+//	Sort(arr,left,mid);
+//	Sort(arr,mid+1,right);
+//	Merge(arr,left,mid,right);
+//}
+//
+//int main() {
+//	int arr[] = { 1,3,1,11,23,23,1,2,3,67,23,232,2 };
+//	Sort(arr, 0,sizeof(arr) / sizeof(arr[0])-1);
+//	for (auto e : arr) {
+//		cout << e << " ";
+//	}
 //	return 0;
 //}
-#include<string>
-#include<iostream>
-using namespace std;
-int main() {
-	string first("They are students.");
-	string second("aeheou");
-	int str[256] = { 0 };
-	for (int i = 0; i < second.size();++i) {
-		str[second[i]] = 1;
-	}
-	for (int i = 0; i < first.size();++i) {
-		if (str[first[i]] == 1) {
-			first.erase(first.begin()+i);
-			i;
-		}
-	}
-	cout << first << endl;
-	return 0;
-}
-
+//
+///*
+//struct ListNode {
+//	int val;
+//	struct ListNode *next;
+//	ListNode(int x) :
+//		val(x), next(NULL) {
+//	}
+//};
+//*/
+//class Solution {
+//public:
+//	ListNode* deleteDuplication(ListNode* pHead)
+//	{
+//		ListNode* Head = new ListNode(1);
+//		Head->next = pHead;
+//		ListNode* pre = Head;
+//		ListNode* cur = pHead;
+//		while (cur != nullptr) {
+//			if (cur->next != nullptr&&cur->val == cur->next->val) {
+//				while (cur->next != nullptr&&cur->val == cur->next->val) {
+//					cur = cur->next;
+//				}
+//				pre->next = cur->next;
+//				cur = cur->next;
+//			}
+//			else {
+//				pre = pre->next;
+//				cur = cur->next;
+//			}
+//
+//		}
+//		return Head->next;
+//	}
+//};
+//class Solution {
+//public:
+//	vector<vector<int>> levelOrder(TreeNode* root) {
+//		vector<vector<int>> vv;
+//		if (root == nullptr) return vv;
+//		queue<TreeNode*> q;
+//		q.push(root);
+//		while (!q.empty()) {
+//			int layer_size = q.size();
+//			//记录每一层的节点
+//			vector<int> ret;
+//			for (int i = 0; i < layer_size; ++i) {
+//				auto p = q.front();
+//				if (p->left)  q.push(p->left);
+//				if (p->right) q.push(p->right);
+//				ret.push_back(p->val);
+//				q.pop();
+//			}
+//			vv.push_back(ret);
+//		}
+//		return vv;
+//	}
+//};
+//
+//class Solution {
+//public:
+//	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+//		if (root == nullptr)
+//			return nullptr;
+//		if (root == p || root == q) {
+//			return root;
+//		}
+//		TreeNode* left = lowestCommonAncestor(root->left, p, q);
+//		TreeNode* right = lowestCommonAncestor(root->right, p, q);
+//
+//		if (left != nullptr&&right != nullptr) {
+//			return root;
+//		}
+//		else if (left != nullptr) {
+//			return left;
+//		}
+//		else if (right != nullptr) {
+//			return right;
+//		}
+//		return nullptr;
+//	}
+//}
