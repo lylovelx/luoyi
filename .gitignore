@@ -4,6 +4,7 @@
 # User-specific files
 *.suo
 *.user
+<<<<<<< HEAD
 *.userosscache
 *.sln.docstates
 
@@ -26,11 +27,27 @@ bld/
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
+=======
+*.sln.docstates
+
+# Build results
+
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
+
+# Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
+!packages/*/build/
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+<<<<<<< HEAD
 # NUNIT
 *.VisualState.xml
 TestResult.xml
@@ -48,6 +65,10 @@ artifacts/
 *_i.c
 *_p.c
 *_i.h
+=======
+*_i.c
+*_p.c
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 *.ilk
 *.meta
 *.obj
@@ -67,31 +88,46 @@ artifacts/
 *.vssscc
 .builds
 *.pidb
+<<<<<<< HEAD
 *.svclog
 *.scc
 
 # Chutzpah Test files
 _Chutzpah*
 
+=======
+*.log
+*.scc
+
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 # Visual C++ cache files
 ipch/
 *.aps
 *.ncb
+<<<<<<< HEAD
 *.opendb
 *.opensdf
 *.sdf
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+=======
+*.opensdf
+*.sdf
+*.cachefile
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 
 # Visual Studio profiler
 *.psess
 *.vsp
 *.vspx
+<<<<<<< HEAD
 *.sap
 
 # TFS 2012 Local Workspace
 $tf/
+=======
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 
 # Guidance Automation Toolkit
 *.gpState
@@ -99,10 +135,13 @@ $tf/
 # ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
+<<<<<<< HEAD
 *.DotSettings.user
 
 # JustCode is a .NET coding add-in
 .JustCode
+=======
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 
 # TeamCity is a build add-in
 _TeamCity*
@@ -111,6 +150,7 @@ _TeamCity*
 *.dotCover
 
 # NCrunch
+<<<<<<< HEAD
 _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
@@ -121,6 +161,10 @@ AutoTest.Net/
 
 # Web workbench (sass)
 .sass-cache/
+=======
+*.ncrunch*
+.*crunch*.local.xml
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 
 # Installshield output folder
 [Ee]xpress/
@@ -139,6 +183,7 @@ DocProject/Help/html
 publish/
 
 # Publish Web Output
+<<<<<<< HEAD
 *.[Pp]ublish.xml
 *.azurePubxml
 # TODO: Comment the next line if you want to checkin your web deploy settings
@@ -198,19 +243,51 @@ orleans.codegen.cs
 # Since there are multiple workflows, uncomment next line to ignore bower_components
 # (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
 #bower_components/
+=======
+*.Publish.xml
+
+# NuGet Packages Directory
+## TODO: If you have NuGet Package Restore enabled, uncomment the next line
+#packages/
+
+# Windows Azure Build Output
+csx
+*.build.csdef
+
+# Windows Store app package directory
+AppPackages/
+
+# Others
+sql/
+*.Cache
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.[Pp]ublish.xml
+*.pfx
+*.publishsettings
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 
 # RIA/Silverlight projects
 Generated_Code/
 
+<<<<<<< HEAD
 # Backup & report files from converting an old project file
 # to a newer Visual Studio version. Backup files are not needed,
 # because we have git ;-)
+=======
+# Backup & report files from converting an old project file to a newer
+# Visual Studio version. Backup files are not needed, because we have git ;-)
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
 _UpgradeReport_Files/
 Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
 # SQL Server files
+<<<<<<< HEAD
 *.mdf
 *.ldf
 
@@ -259,3 +336,30 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+=======
+App_Data/*.mdf
+App_Data/*.ldf
+
+
+#LightSwitch generated files
+GeneratedArtifacts/
+_Pvt_Extensions/
+ModelManifest.xml
+
+# =========================
+# Windows detritus
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac desktop service store files
+.DS_Store
+>>>>>>> fc7d10d334ede8dcd489e8a2fbbdf176c12a5faa
