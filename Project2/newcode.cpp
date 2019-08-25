@@ -266,10 +266,10 @@ public:
 	}
 };
 int main() {
-	
+
 	Solution s;
 	vector<vector<int>> v = s.FindContinuousSequence(3);
-	
+
 	for (auto& e : v) {
 		for (auto& i : e) {
 			cout << i << " ";
